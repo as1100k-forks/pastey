@@ -1,6 +1,6 @@
 #![deny(warnings)]
 
-use paste::paste;
+use pastey::paste;
 
 macro_rules! m {
     ($i:ident) => {
