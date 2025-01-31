@@ -1,4 +1,4 @@
-use paste::paste;
+use pastey::paste;
 
 paste! {
     fn [<env!(1.31)>]() {}

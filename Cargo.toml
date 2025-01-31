@@ -1,21 +1,20 @@
 [package]
-name = "paste"
-version = "1.0.15"
-authors = ["David Tolnay <dtolnay@gmail.com>"]
+name = "pastey"
+version = "0.0.1"
+authors = ["Aditya Kumar <git@adityais.dev>", "David Tolnay <dtolnay@gmail.com>"]
 categories = ["development-tools", "no-std", "no-std::no-alloc"]
 description = "Macros for all your token pasting needs"
-documentation = "https://docs.rs/paste"
 edition = "2018"
 keywords = ["macros"]
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/dtolnay/paste"
+repository = "https://github.com/as1100k/pastey"
 rust-version = "1.31"
 
 [lib]
 proc-macro = true
 
 [dev-dependencies]
-paste-test-suite = { version = "0", path = "tests/macros" }
+pastey-test-suite = { version = "0", path = "tests/macros" }
 rustversion = "1.0"
 trybuild = { version = "1.0.49", features = ["diff"] }
 

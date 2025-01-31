@@ -6,6 +6,8 @@ Macros for all your token pasting needs
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-paste-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/paste)
 [<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/dtolnay/paste/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/dtolnay/paste/actions?query=branch%3Amaster)
 
+_This crate is the fork of [paste](https://crates.io/crates/paste) and I really appreciate all the contributors._
+
 The nightly-only [`concat_idents!`] macro in the Rust standard library is
 notoriously underpowered in that its concatenated identifiers can only refer to
 existing items, they can never be used to define something new.
@@ -30,7 +32,7 @@ Within the `paste!` macro, identifiers inside `[<`...`>]` are pasted together to
 form a single identifier.
 
 ```rust
-use paste::paste;
+use pastey::paste;
 
 paste! {
     // Defines a const called `QRST`.
@@ -54,7 +56,7 @@ fields. It demonstrates how you might find it useful to bundle a paste
 invocation inside of a macro\_rules macro.
 
 ```rust
-use paste::paste;
+use pastey::paste;
 
 macro_rules! make_a_struct_and_getters {
     ($name:ident { $($field:ident),* }) => {
@@ -123,7 +125,7 @@ Within the `paste!` macro, arguments to a #\[doc ...\] attribute are implicitly
 concatenated together to form a coherent documentation string.
 
 ```rust
-use paste::paste;
+use pastey::paste;
 
 macro_rules! method_new {
     ($ret:ident) => {
