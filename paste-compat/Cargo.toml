@@ -2,7 +2,7 @@
 name = "paste-compat"
 version = "0.0.0"
 authors = ["Aditya Kumar <git@adityais.dev>"]
-edition = "2024"
+edition = "2018"
 publish = false
 
 [features]
