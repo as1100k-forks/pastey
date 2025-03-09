@@ -6,31 +6,45 @@ Macros for all your token pasting needs
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-pastey-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/pastey)
 [<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/as1100k/pastey/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/as1100k/pastey/actions?query=branch%master)
 
-_This crate is the fork of [paste](https://crates.io/crates/paste) and I really appreciate all the contributors._
+**_This crate is the successor of [crate](https://github.com/dtolnay/paste)_**
 
-> [!WARNING]
-> This crate is still under development and isn't released on crates.io, This will be released on crates.io
-> once it has fixed some real issues on the [paste](https://github.com/dtolnay/paste/issues) crate and then
-> it will be released.
+<details>
+<summary>Migrating from `paste` crate</summary>
 
-The nightly-only [`concat_idents!`] macro in the Rust standard library is
-notoriously underpowered in that its concatenated identifiers can only refer to
-existing items, they can never be used to define something new.
+Migrating from `paste` crate to `pastey` is super simple, just change the following in your `Cargo.toml`
 
-[`concat_idents!`]: https://doc.rust-lang.org/std/macro.concat_idents.html
+```diff
+[dependencies]
+- paste = "1"
++ pastey = "*" # Or any specific version of pastey
+```
 
-This crate provides a flexible way to paste together identifiers in a macro,
-including using pasted identifiers to define new items.
+Or even better way:
+
+```diff
+[dependencies]
+- paste = "1"
++ paste = { package = "pastey", version = "*" }
+```
+
+</details>
+
+<br>
+
+This crate aims to be a drop-in replacement for `paste` and doesn't change any existing behaviour while
+adding features and fixing bugs. [See Case Conversion for more info](#case-conversion)
+
+## Quick Start
+
+Add `pastey` as your dependency in `Cargo.toml`
 
 ```toml
 [dependencies]
-# Currently, the crate isn't released on crates.io
-paste = { git = "https://github.com/as1100k/pastey.git" }
+# TODO: Replace with latest version available on crates.io
+pastey = "*"
 ```
 
 This approach works with any Rust compiler 1.54+.
-
-<br>
 
 ## Pasting identifiers
 
@@ -167,12 +181,19 @@ macro_rules! method_new {
     };
 }
 
-pub struct Paste {}
+pub struct Pastey {}
 
-method_new!(Paste);  // expands to #[doc = "Create a new `Paste` object"]
+method_new!(Pastey);  // expands to #[doc = "Create a new `Paste` object"]
 ```
 
 <br>
+
+#### Credits
+
+<sup>
+This crate is the fork of [paste](https://github.com/dtolnay/paste) and I appreciate the efforts of
+@dtolnay and other contributors.
+</sup>
 
 #### License
 
