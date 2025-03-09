@@ -8,6 +8,11 @@ Macros for all your token pasting needs
 
 _This crate is the fork of [paste](https://crates.io/crates/paste) and I really appreciate all the contributors._
 
+> [!WARNING]
+> This crate is still under development and isn't released on crates.io, This will be released on crates.io
+> once it has fixed some real issues on the [paste](https://github.com/dtolnay/paste/issues) crate and then
+> it will be released.
+
 The nightly-only [`concat_idents!`] macro in the Rust standard library is
 notoriously underpowered in that its concatenated identifiers can only refer to
 existing items, they can never be used to define something new.
@@ -19,7 +24,8 @@ including using pasted identifiers to define new items.
 
 ```toml
 [dependencies]
-paste = "1.0"
+# Currently, the crate isn't released on crates.io
+pastey = { git = "https://github.com/as1100k/pastey.git" }
 ```
 
 This approach works with any Rust compiler 1.31+.
