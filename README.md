@@ -111,13 +111,14 @@ fn call_some_getters(s: &S) -> bool {
 
 The `pastey` crate supports the following case modfiers:
 
-| Modifier          | Description                           |
-|-------------------|---------------------------------------|
-| `$var:lower`      | Lower Case                            |
-| `$var:upper`      | Upper Case                            |
-| `$var:snake`      | [Snake Case]                          |
-| `$var:camel`      | [Camel Case]                          |
-| `$var:camel_edge` | Covers Edge cases of Camel Case. [#3] |
+| Modifier                           | Description                           |
+|------------------------------------|---------------------------------------|
+| `$var:lower`                       | Lower Case                            |
+| `$var:upper`                       | Upper Case                            |
+| `$var:snake`                       | [Snake Case]                          |
+| `$var:camel` or `$var:upper_camel` | Upper Camel Case                      |
+| `$var:lower_camel`                 | Lower Camel Case [#4]                 |
+| `$var:camel_edge`                  | Covers Edge cases of Camel Case. [#3] |
 
 _**NOTE: The pastey crate is going to be a drop in replacement to paste crate,
 and will not change the behaviour of existing modifier like `lower`, `upper`,
@@ -143,8 +144,7 @@ The precise Unicode conversions are as defined by [`str::to_lowercase`] and
 [`str::to_uppercase`].
 
 [#3]: https://github.com/AS1100K/pastey/issues/3
-[Snake Case]: https://en.wikipedia.org/wiki/Snake_case
-[Camel Case]: https://en.wikipedia.org/wiki/Camel_case
+[#4]: https://github.com/AS1100K/pastey/issues/4
 [`str::to_lowercase`]: https://doc.rust-lang.org/std/primitive.str.html#method.to_lowercase
 [`str::to_uppercase`]: https://doc.rust-lang.org/std/primitive.str.html#method.to_uppercase
 

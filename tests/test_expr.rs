@@ -197,12 +197,22 @@ fn test_env_to_camel() {
 }
 
 #[test]
+fn test_env_to_lower_camel() {
+    paste! {
+        #[allow(non_upper_case_globals)]
+        const [<LIB env!("CARGO_PKG_NAME"):lower_camel>]: &str = "libpastey";
+    }
+
+    let _ = LIBpastey;
+}
+
+#[test]
 fn test_env_to_camel_edge() {
     paste! {
         #[allow(non_upper_case_globals)]
-        const [<__Lib_ env!("CARGO_PKG_NAME"):camel_edge>]: &str = "libpastey";
+        const [<__Lib_:camel_edge env!("CARGO_PKG_NAME"):camel_edge>]: &str = "libpastey";
 
-        let _ = __Lib_Pastey;
+        let _ = __LibPastey;
     }
 }
 
