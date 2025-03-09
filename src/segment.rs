@@ -192,14 +192,22 @@ pub(crate) fn paste(segments: &[Segment]) -> Result<String> {
                         }
                         evaluated.push(acc.to_lowercase());
                     }
-                    "camel" => {
+                    "camel" | "upper_camel" | "lower_camel" => {
+                        let mut is_lower_camel = ident.to_string().as_str() == "lower_camel";
                         let mut acc = String::new();
                         let mut prev = '_';
                         for ch in last.chars() {
                             if ch != '_' {
                                 if prev == '_' {
-                                    for chu in ch.to_uppercase() {
-                                        acc.push(chu);
+                                    if is_lower_camel {
+                                        for chl in ch.to_lowercase() {
+                                            acc.push(chl);
+                                        }
+                                        is_lower_camel = false;
+                                    } else {
+                                        for chu in ch.to_uppercase() {
+                                            acc.push(chu);
+                                        }
                                     }
                                 } else if prev.is_uppercase() {
                                     for chl in ch.to_lowercase() {

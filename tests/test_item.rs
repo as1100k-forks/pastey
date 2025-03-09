@@ -163,6 +163,25 @@ mod test_to_camel {
     }
 }
 
+mod test_to_lower_camel {
+    use pastey::paste;
+
+    macro_rules! m {
+        ($id:ident) => {
+            paste! {
+                const DEFAULT_LOWER_CAMEL: &str = stringify!([<$id:lower_camel>]);
+            }
+        };
+    }
+
+    m!(this_is_but_a_test);
+
+    #[test]
+    fn test_to_lower_camel() {
+        assert_eq!(DEFAULT_LOWER_CAMEL, "thisIsButATest");
+    }
+}
+
 mod test_to_camel_edge {
     use pastey::paste;
 
