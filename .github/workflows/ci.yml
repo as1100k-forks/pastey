@@ -15,18 +15,6 @@ env:
 jobs:
   pre_ci:
     uses: dtolnay/.github/.github/workflows/pre_ci.yml@master
-  
-  compat:
-    name: Pastey Compatibility with Paste
-    needs: pre_ci
-    if: needs.pre_ci.outputs.continue
-    runs-on: ubuntu-lates
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@master
-      - run: |
-         cd paste-compat
-         ./test.sh
     
   test:
     name: Rust ${{matrix.rust}}

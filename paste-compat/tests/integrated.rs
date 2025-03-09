@@ -36,6 +36,7 @@ macro_rules! make_a_struct_and_getters {
 
 make_a_struct_and_getters!(S { a, b, c });
 
+#[allow(dead_code)]
 fn call_some_getters(s: &S) -> bool {
     s.get_a() == s.get_b() && s.get_c().is_empty()
 }
