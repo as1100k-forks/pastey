@@ -28,7 +28,7 @@ including using pasted identifiers to define new items.
 paste = { git = "https://github.com/as1100k/pastey.git" }
 ```
 
-This approach works with any Rust compiler 1.31+.
+This approach works with any Rust compiler 1.54+.
 
 <br>
 

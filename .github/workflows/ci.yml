@@ -42,14 +42,14 @@ jobs:
           path: Cargo.lock
 
   msrv:
-    name: Rust 1.31.0
+    name: Rust 1.54
     needs: pre_ci
     if: needs.pre_ci.outputs.continue
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@1.31.0
+      - uses: dtolnay/rust-toolchain@1.54
       - run: cargo check
 
   doc:
