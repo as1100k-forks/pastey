@@ -1,0 +1,13 @@
+[package]
+name = "paste-compat"
+version = "0.0.0"
+authors = ["Aditya Kumar <git@adityais.dev>"]
+edition = "2024"
+publish = false
+
+[features]
+use_original = []
+
+[dependencies]
+paste = { version = "1" }
+pastey = { path = "../" }
