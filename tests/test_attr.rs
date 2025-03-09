@@ -9,10 +9,10 @@ fn test_attr() {
         #[paste_test(k = "val" "ue")]
         struct A;
 
-        #[pastey_test_suite::paste_test(k = "val" "ue")]
+        #[paste_test(k = "val" "ue")]
         struct B;
 
-        #[::pastey_test_suite::paste_test(k = "val" "ue")]
+        #[paste_test(k = "val" "ue")]
         struct C;
 
         #[paste_test(k = "va" [<l u>] e)]
