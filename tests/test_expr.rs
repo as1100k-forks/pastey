@@ -196,6 +196,16 @@ fn test_env_to_camel() {
     }
 }
 
+#[test]
+fn test_env_to_camel_edge() {
+    paste! {
+        #[allow(non_upper_case_globals)]
+        const [<__Lib_ env!("CARGO_PKG_NAME"):camel_edge>]: &str = "libpastey";
+
+        let _ = __Lib_Pastey;
+    }
+}
+
 mod test_x86_feature_literal {
     // work around https://github.com/rust-lang/rust/issues/72726
 

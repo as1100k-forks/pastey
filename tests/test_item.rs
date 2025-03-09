@@ -163,6 +163,29 @@ mod test_to_camel {
     }
 }
 
+mod test_to_camel_edge {
+    use pastey::paste;
+
+    macro_rules! m {
+        ($id:ident) => {
+            paste! {
+                const DEFAULT_CAMEL_EDGE: &str = stringify!([<$id:camel_edge>]);
+                const LOWER_CAMEL_EDGE: &str = stringify!([<$id:camel_edge:lower>]);
+                const UPPER_CAMEL_EDGE: &str = stringify!([<$id:camel_edge:upper>]);
+            }
+        };
+    }
+
+    m!(__this_is_but_a__test);
+
+    #[test]
+    fn test_to_camel_edge() {
+        assert_eq!(DEFAULT_CAMEL_EDGE, "__ThisIsButA_Test");
+        assert_eq!(LOWER_CAMEL_EDGE, "__thisisbuta_test");
+        assert_eq!(UPPER_CAMEL_EDGE, "__THISISBUTA_TEST");
+    }
+}
+
 mod test_doc_expr {
     // https://github.com/dtolnay/paste/issues/29
 
