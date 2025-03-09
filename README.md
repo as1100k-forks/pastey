@@ -4,7 +4,7 @@ Macros for all your token pasting needs
 [<img alt="github" src="https://img.shields.io/badge/github-as1100k/pastey-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/as1100k/pastey)
 [<img alt="crates.io" src="https://img.shields.io/crates/v/pastey.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/pastey)
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-pastey-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/pastey)
-[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/as1100k/pastey/ci.yml?branch=main&style=for-the-badge" height="20">](https://github.com/as1100k/pastey/actions?query=branch%3Amain)
+[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/as1100k/pastey/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/as1100k/pastey/actions?query=branch%master)
 
 _This crate is the fork of [paste](https://crates.io/crates/paste) and I really appreciate all the contributors._
 
@@ -25,7 +25,7 @@ including using pasted identifiers to define new items.
 ```toml
 [dependencies]
 # Currently, the crate isn't released on crates.io
-pastey = { git = "https://github.com/as1100k/pastey.git" }
+paste = { git = "https://github.com/as1100k/pastey.git" }
 ```
 
 This approach works with any Rust compiler 1.31+.
@@ -109,17 +109,42 @@ fn call_some_getters(s: &S) -> bool {
 
 ## Case conversion
 
-Use `$var:lower` or `$var:upper` in the segment list to convert an interpolated
-segment to lower- or uppercase as part of the paste. For example, `[<ld_
-$reg:lower _expr>]` would paste to `ld_bc_expr` if invoked with $reg=`Bc`.
+The `pastey` crate supports the following case modfiers:
 
-Use `$var:snake` to convert CamelCase input to snake\_case.
-Use `$var:camel` to convert snake\_case to CamelCase.
-These compose, so for example `$var:snake:upper` would give you SCREAMING\_CASE.
+| Modifier          | Description                           |
+|-------------------|---------------------------------------|
+| `$var:lower`      | Lower Case                            |
+| `$var:upper`      | Upper Case                            |
+| `$var:snake`      | [Snake Case]                          |
+| `$var:camel`      | [Camel Case]                          |
+| `$var:camel_edge` | Covers Edge cases of Camel Case. [#3] |
+
+_**NOTE: The pastey crate is going to be a drop in replacement to paste crate,
+and will not change the behaviour of existing modifier like `lower`, `upper`,
+`snake` and `camel`. For modifying the behaviour new modifiers will be created,
+like `camel_edge`**_
+
+You can also use multiple of these modifers like `$var:snake:upper` would give you
+`SCREAMING_SNAKE_CASE`.
+
+Example
+
+```rust
+use pastey::paste;
+
+paste! {
+    const [<LIB env!("CARGO_PKG_NAME"):snake:upper>]: &str = "libpastey";
+
+    let _ = LIBPASTEY;
+}
+```
 
 The precise Unicode conversions are as defined by [`str::to_lowercase`] and
 [`str::to_uppercase`].
 
+[#3]: https://github.com/AS1100K/pastey/issues/3
+[Snake Case]: https://en.wikipedia.org/wiki/Snake_case
+[Camel Case]: https://en.wikipedia.org/wiki/Camel_case
 [`str::to_lowercase`]: https://doc.rust-lang.org/std/primitive.str.html#method.to_lowercase
 [`str::to_uppercase`]: https://doc.rust-lang.org/std/primitive.str.html#method.to_uppercase
 
