@@ -10,6 +10,10 @@ not change the behavior or names of existing modifiers. For new behavior, please
 For this we have a special test crate named [paste-compat](./paste-compat/), it is always appreciated
 to add more test cases here that works on paste crate.
 
+## Testing
+
+Run `./test.sh` for testing your code
+
 ## How to Contribute
 
 1. **Fork the repository**: Click the "Fork" button at the top right of the repository page.

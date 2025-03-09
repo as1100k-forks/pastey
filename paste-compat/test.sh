@@ -1,5 +1,4 @@
 #!/bin/bash
-# run_compat_tests.sh
 # This script runs the compatibility tests for both the original paste and pastey.
 # If any test fails, the script will exit with an error.
 
