@@ -1,4 +1,5 @@
 #![allow(clippy::let_underscore_untyped)]
+#![allow(non_camel_case_types)]
 
 use pastey::paste;
 
@@ -109,7 +110,7 @@ fn test_env_present() {
     paste! {
         struct [<Lib env!("CARGO_PKG_NAME")>];
 
-        let _ = Libpastey;
+        let _ = Libpastey_test_suite;
     }
 }
 
@@ -164,7 +165,7 @@ fn test_env_to_lower() {
     paste! {
         struct [<Lib env!("CARGO_PKG_NAME"):lower>];
 
-        let _ = Libpastey;
+        let _ = Libpastey_test_suite;
     }
 }
 
@@ -173,7 +174,7 @@ fn test_env_to_upper() {
     paste! {
         const [<LIB env!("CARGO_PKG_NAME"):upper>]: &str = "libpastey";
 
-        let _ = LIBPASTEY;
+        let _ = LIBPASTEY_TEST_SUITE;
     }
 }
 
@@ -182,7 +183,7 @@ fn test_env_to_snake() {
     paste! {
         const [<LIB env!("CARGO_PKG_NAME"):snake:upper>]: &str = "libpastey";
 
-        let _ = LIBPASTEY;
+        let _ = LIBPASTEY_TEST_SUITE;
     }
 }
 
@@ -192,7 +193,7 @@ fn test_env_to_camel() {
         #[allow(non_upper_case_globals)]
         const [<LIB env!("CARGO_PKG_NAME"):camel>]: &str = "libpastey";
 
-        let _ = LIBPastey;
+        let _ = LIBPasteyTestSuite;
     }
 }
 
@@ -203,7 +204,7 @@ fn test_env_to_lower_camel() {
         const [<LIB env!("CARGO_PKG_NAME"):lower_camel>]: &str = "libpastey";
     }
 
-    let _ = LIBpastey;
+    let _ = LIBpasteyTestSuite;
 }
 
 #[test]
@@ -212,7 +213,7 @@ fn test_env_to_camel_edge() {
         #[allow(non_upper_case_globals)]
         const [<__Lib_:camel_edge env!("CARGO_PKG_NAME"):camel_edge>]: &str = "libpastey";
 
-        let _ = __LibPastey;
+        let _ = __LibPasteyTestSuite;
     }
 }
 

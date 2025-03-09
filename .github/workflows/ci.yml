@@ -46,7 +46,7 @@ jobs:
       - name: Enable type layout randomization
         run: echo RUSTFLAGS=${RUSTFLAGS}\ -Zrandomize-layout >> $GITHUB_ENV
         if: matrix.rust == 'nightly'
-      - run: cargo test
+      - run: ./test.sh
       - uses: actions/upload-artifact@v4
         if: matrix.rust == 'nightly' && always()
         with:
@@ -94,13 +94,13 @@ jobs:
     if: needs.pre_ci.outputs.continue
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      MIRIFLAGS: -Zmiri-strict-provenance
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@miri
-      - run: cargo miri setup
-      - run: cargo miri test
-        env:
-          MIRIFLAGS: -Zmiri-strict-provenance
+      - run: cd ./pastey-test-suite && cargo miri setup && cargo miri test && cd ../
+      - run: cd ./paste-compat && cargo miri setup && cargo miri test && cd ../
 
   outdated:
     name: Outdated
