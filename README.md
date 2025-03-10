@@ -6,7 +6,7 @@ Macros for all your token pasting needs
 [<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-pastey-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/pastey)
 [<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/as1100k/pastey/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/as1100k/pastey/actions?query=branch%master)
 
-**_This crate is the successor of [crate](https://github.com/dtolnay/paste)_**
+**_This crate is the successor of [paste crate](https://github.com/dtolnay/paste)_**
 
 <details>
 <summary>Migrating from `paste` crate</summary>
